@@ -1,9 +1,6 @@
 package metalogy.springframework.sfgdi;
 
-import metalogy.springframework.sfgdi.controllers.ConstructorInjectedController;
-import metalogy.springframework.sfgdi.controllers.MyController;
-import metalogy.springframework.sfgdi.controllers.PropertyInjectedController;
-import metalogy.springframework.sfgdi.controllers.SetterInjectedController;
+import metalogy.springframework.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +11,10 @@ public class SfgDiApplication {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
         MyController myController = (MyController) ctx.getBean("myController");
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayGreeting());
+
 
         System.out.println("________ Primary bean");
         System.out.println(myController.sayHello());
